@@ -22,3 +22,8 @@ git init --yes
 ## 2. You can use any testing platform of your choice, preferrably POSTMAN
 ### Open AI endpoint
 POST METHOD: localhost:5000/openai/generateimage
+### Sample request, this is in json format
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
