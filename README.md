@@ -4,7 +4,7 @@ An image generator from human language text prompt built with OpenaAI image gene
 # Technologies
 NodeJS, express, openai
 
-# HOWTO RUN REPOSITORY
+# HOW TO RUN REPOSITORY
 ## 1. Make sure you nodeJs installed 
 [You can install nodeJS to your Mac or Windows](https://nodejs.org/en/download/)
 
@@ -29,3 +29,5 @@ POST METHOD: localhost:5000/openai/generateimage
     "size": "medium"
 }
 ```
+> Note: Prompt: Is the input text to be generated 
+> size is the image generated size i.e small, medium and large
