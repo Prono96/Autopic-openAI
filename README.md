@@ -24,6 +24,8 @@ git init --yes
 POST METHOD: localhost:5000/openai/generateimage
 ### Sample request, this is in json format
 ```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
+{
+    "prompt": "A horse running in the clouds",
+    "size": "medium"
+}
 ```
