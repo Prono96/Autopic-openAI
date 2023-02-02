@@ -29,5 +29,6 @@ POST METHOD: localhost:5000/openai/generateimage
     "size": "medium"
 }
 ```
-> Note: Prompt: Is the input text to be generated 
+> Note: Prompt: Is the input text to be generated
+>  
 > size is the image generated size i.e small, medium and large
