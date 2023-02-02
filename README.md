@@ -16,8 +16,9 @@ git init --yes
 
 
 # TO TEST APPLICATION
-## Firstly, you have to generate your own API secret key, use this link
+## 1. You have to generate your own API secret key, use this link
 [To generate OpenAI secret key](https://platform.openai.com/)
-You can use any testing platform of your choice, preferrably POSTMAN
-## Open AI endpoint
+
+## 2. You can use any testing platform of your choice, preferrably POSTMAN
+### Open AI endpoint
 POST METHOD: localhost:5000/openai/generateimage
