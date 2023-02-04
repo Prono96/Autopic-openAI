@@ -10,8 +10,8 @@ const editImage = async(req, res) => {
 
   try {
     const response = await openai.createImageEdit({
-      image: fs.createReadStream("demoImage.png"),
-      mask: fs.createReadStream("demoImage2.png"),
+      image: fs.createReadStream("../public/demoImage1.png"),
+      mask: fs.createReadStream("public/demoImage2.png"),
       prompt: "Covered with sky",
       n: 1,
       size: "512x512"
