@@ -1,3 +1,4 @@
+const path = require('path') 
 const express = require('express');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
@@ -12,8 +13,7 @@ app.use(bodyParser.json())
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
-
-
+app.use(express.static('public'))
 app.use('/openai', require('./routes/openaiRoutes'))
 
 
