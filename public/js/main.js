@@ -1,6 +1,9 @@
 function onSubmit(e) {
   e.preventDefault();
 
+  document.querySelector('.msg').textContent = '';
+  document.querySelector('#image').src = '';
+
   const prompt = document.querySelector('#prompt').value;
   const size = document.querySelector('#size').value;
 
@@ -25,8 +28,21 @@ async function generateImageRequest(prompt, size) {
       size
     })
   })
+
+  if(!response.ok) {
+    removeSpinner()
+    throw new Error('Image cannot be generated');
+  }
+
+  const data = await response.json();
+  // console.log(data)
+  const imageURL = data.image_link;
+
+  document.querySelector('#image').src = imageURL
+
+  removeSpinner();
  } catch (error) {
-  
+  document.querySelector('.msg').textContent = error;
  }
 }
 
