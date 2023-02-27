@@ -1,6 +1,8 @@
 # Autopic-openAI
 An image generator from human language text prompt built with OpenaAI image generator API
-(https://autopic.onrender.com)
+
+[Autopic link](https://autopic.onrender.com)
+
 # Technologies
 NodeJS, express, openai
 
