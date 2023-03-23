@@ -18,6 +18,9 @@ mongoose.connect(uri).then(
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // parse application/json
 app.use(bodyParser.json())
 
