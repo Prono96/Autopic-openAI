@@ -1,4 +1,6 @@
 const express = require("express");
+const User = require('../models/user')
+const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -23,24 +25,33 @@ store.on('error', function(error) {
 app.use(session({
   secret: 'your_secret_key',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: store
 }));
 
-// create a middleware to check if the session is working
-// function requireAuth(req, res, next) {
-//   if (req.session.isAuth) {
-//     next();
-//   } else {
-//     res.status(401).send('Unauthorized');
-//   }
-// }
+// Router end point
+router.post("/signup", async(req, res) => {
+  const {name, email, password, created_at} = req.body;
+  let user = await User.findOne({ email })
 
-router.get("/login", (req, res) => {
-//  req.session.isAuth = true;
- const sess = req.session
- res.status(200).send(`You are logged in and this is your ${sess}` );
- console.log(sess);
+  if(user) {
+    return res.status(303).send("This user already exist")
+  }
+
+  // Bcrypt
+  const hash = await bcrypt.hash(password, 12);
+
+  user = new User({
+    name,
+    email,
+    password: hash,
+    created_at
+  })
+
+  await user.save();
+
+  res.status(201).send("user has been created to the database");
+  console.log("user has been created to the database");
 }
 );
 
