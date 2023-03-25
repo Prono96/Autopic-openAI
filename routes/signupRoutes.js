@@ -31,20 +31,24 @@ app.use(session({
 
 // Router end point
 router.post("/signup", async(req, res) => {
-  const {name, email, password, created_at} = req.body;
+  const {name, email, password, confirmPassword, created_at} = req.body;
   let user = await User.findOne({ email })
 
   if(user) {
     return res.status(303).send("This user already exist")
   }
 
+  const passwordToHash = password + confirmPassword;
+
+
   // Bcrypt
-  const hash = await bcrypt.hash(password, 12);
+  const hash = await bcrypt.hash(passwordToHash, 12);
 
   user = new User({
     name,
     email,
     password: hash,
+    confirmPassword: hash,
     created_at
   })
 

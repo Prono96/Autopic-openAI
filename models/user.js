@@ -20,6 +20,16 @@ const userSchema = new Schema({
     required: true,
     minlength: 8
   },
+  confirmPassword: {
+    type: String,
+    required: true,
+    validate: {
+      validator: function(v) {
+        return v === this.password;
+      },
+      message: 'Passwords do not match'
+    }
+  },
   created_at: {
     type: Date,
     default: Date.now
