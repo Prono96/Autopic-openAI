@@ -30,6 +30,13 @@ app.use(session({
 }));
 
 // Router end point
+router.get("/signup", async(req, res) => {
+  res.sendFile(__dirname+'../public/signup.html');
+  // res.send("welcome to signup")
+  console.log("signup page");
+})
+
+
 router.post("/signup", async(req, res) => {
   const {name, email, password, confirmPassword, created_at} = req.body;
   let user = await User.findOne({ email })
@@ -38,8 +45,8 @@ router.post("/signup", async(req, res) => {
     return res.status(303).send("This user already exist")
   }
 
+  // Hash password and confirmPassword 
   const passwordToHash = password + confirmPassword;
-
 
   // Bcrypt
   const hash = await bcrypt.hash(passwordToHash, 12);
