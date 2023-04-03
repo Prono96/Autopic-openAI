@@ -1,12 +1,14 @@
+const path = require('path') 
 const express = require("express");
 const User = require('../models/user')
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-
+const router = express.Router();
 const app = express();
 
-const router = express.Router();
+// app.use(express.static(__dirname + 'public'))
+
 // Defining the database connection url 
 const uri = `mongodb+srv://chiboy:${process.env.MONGODB_PASSWORD}@cluster0.xfvp9cv.mongodb.net/?retryWrites=true&w=majority`
 
@@ -31,7 +33,7 @@ app.use(session({
 
 // Router end point
 router.get("/signup", async(req, res) => {
-  res.sendFile(__dirname+'../public/signup.html');
+  res.sendFile(path.join(__dirname, '../public', 'signup.html'));
   // res.send("welcome to signup")
   console.log("signup page");
 })
